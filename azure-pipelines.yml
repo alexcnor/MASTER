@@ -29,9 +29,4 @@ steps:
     displayName: Print Parameters
   - string: |
       ls -la
-      sed -i "s/{{client}}/${{parameters.client}}/" main.tf
-      sed -i "s/{{environment}}/${{parameters.environment}}/" main.tf
-      sed -i "s/{{nodeNumber}}/${{parameters.nodeNumber}}/" main.tf
-      sed -i "s/{{resourceGroup}}/${{parameters.resourceGroup}}/" main.tf
-      sed -i "s/{{vmSize}}/${{parameters.vmSize}}/" main.tf
       cat main.tf
