@@ -13,6 +13,12 @@ terraform {
   }
 }
 
+provider "azurerm" {
+  subscription_id = "{{AzureSubscriptionID}}"
+
+  features {}
+}
+
 resource "azurerm_kubernetes_cluster" "cluster" {
   dns_prefix                      = "{{environment}}"
   enable_pod_security_policy      = false
