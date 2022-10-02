@@ -35,3 +35,8 @@ steps:
       sed -i "s/{{resourceGroup}}/${{parameters.resourceGroup}}/" main.tf
       sed -i "s/{{vmSize}}/${{parameters.vmSize}}/" main.tf
       cat main.tf
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish AKS Artifact'
+    inputs:
+      PathtoPublish: '$(System.DefaultWorkingDirectory)/'
+      ArtifactName: 'aks'
