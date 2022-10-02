@@ -1,0 +1,38 @@
+trigger:
+  - none
+
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+parameters:
+  - name: client
+    type: string
+    default: 'null'
+  - name: environment
+    type: string
+    default: 'null'
+  - name: nodeNumber
+    type: number
+    default: 0
+  - name: resourceGroup
+    type: string
+    default: 'null'
+  - name: vmSize
+    type: string
+    default: 'null'
+
+steps:
+  - script: | 
+      echo ${{parameters.client}}
+    displayName: Print Parameters
+  - string: |
+      ls -la
+      sed -i "s/{{client}}/$(parameters.client)/" main.tf
+      sed -i "s/{{environment}}/$(parameters.environment)/" main.tf
+      sed -i "s/{{nodeNumber}}/$(parameters.nodeNumber)/" main.tf
+      sed -i "s/{{resourceGroup}}/$(parameters.resourceGroup)/" main.tf
+      sed -i "s/{{vmSize}}/$(parameters.vmSize)/" main.tf
+      
+      cat main.tf
